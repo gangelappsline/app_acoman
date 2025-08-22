@@ -1,0 +1,2 @@
+C:/Users/Mi PC/development/acoman_folder/acoman_app/android/app/.cxx/Debug/411u2y2c/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/Mi PC/development/acoman_folder/acoman_app/android/app/.cxx/Debug/411u2y2c/x86_64/CMakeFiles/rebuild_cache.dir
