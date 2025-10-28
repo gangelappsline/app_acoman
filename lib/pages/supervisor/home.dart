@@ -4,7 +4,9 @@ import 'package:acoman/classes/client.dart';
 import 'package:acoman/classes/maneuver.dart';
 import 'package:acoman/components/custom_progress_indicator.dart';
 import 'package:acoman/components/maneuver_card.dart';
+import 'package:acoman/pages/supervisor/maneuvers/container_form_page.dart';
 import 'package:acoman/pages/supervisor/maneuvers/history.dart';
+import 'package:acoman/pages/supervisor/maneuvers/maneuver_container_list.dart';
 import 'package:acoman/pages/supervisor/maneuvers/maneuver_detail.dart';
 import 'package:acoman/pages/supervisor/maneuvers/maneuver_detail_mar.dart';
 import 'package:acoman/pages/supervisor/maneuvers/maneuver_details_dry.dart';
@@ -100,7 +102,13 @@ class _HomeSupervisorPageState extends State<HomeSupervisorPage> {
   }
 
   void _navigateToDetail(Maneuver maneuver) {
-    switch (maneuver.type) {
+    Navigator.push(
+  context,
+  MaterialPageRoute(
+    builder: (context) => ManeuverContainerList(maneuver: maneuver),
+  ),
+);
+    /*switch (maneuver.type) {
       case "frio":
         Navigator.push(
           context,
@@ -137,7 +145,7 @@ class _HomeSupervisorPageState extends State<HomeSupervisorPage> {
           ),
         );
         break;
-    }
+    }*/
   }
 
   @override
@@ -146,7 +154,7 @@ class _HomeSupervisorPageState extends State<HomeSupervisorPage> {
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.primary,
           title: const Text(
-            'Programación de Maniobras',
+            'Programación de hoy',
             style: TextStyle(color: Colors.white, fontSize: 20.0),
           ),
           actions: [

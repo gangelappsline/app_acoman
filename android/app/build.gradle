@@ -10,7 +10,7 @@ plugins {
 
 android {
     namespace = "com.example.acoman"
-    compileSdk = 35 //flutter.compileSdkVersion
+    compileSdk = 36 //flutter.compileSdkVersion
     ndkVersion = "28.0.13004108"//flutter.ndkVersion
 
     compileOptions {

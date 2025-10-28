@@ -44,19 +44,6 @@ class _ManeuversHistorySupervisorPageState
                   ],
                 ),
                 const SizedBox(height: 8),
-                Row(
-                  children: [
-                    Chip(
-                      label: Text(maneuver.status),
-                      backgroundColor: _getDifficultyColor(maneuver.status)),
-                     SizedBox(width: 8),
-                    Chip(
-                      label: Text(maneuver.company),
-                      backgroundColor: Colors.grey[200],
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 8),
                 Text(
                   maneuver.status,
                   style: const TextStyle(fontSize: 16, color: Colors.grey),

@@ -1,6 +1,8 @@
 import 'package:acoman/classes/maneuver.dart';
 import 'package:acoman/components/custom_progress_indicator.dart';
 import 'package:acoman/pages/fullScreenImage.dart';
+import 'package:acoman/pages/toll/ManeuverContainerFiles.dart'
+    as container_files;
 import 'package:acoman/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -458,15 +460,78 @@ class _ManeuverDertailsTollPageState extends State<ManeuverDertailsTollPage> {
                                         style: TextStyle(
                                             fontWeight: FontWeight.w700),
                                       ),
-                                      IconButton(
-                                          onPressed: () {},
-                                          icon: Icon(Icons.add))
                                     ],
                                   ),
                                   Divider(),
                                   SizedBox(
                                     height: 5,
                                   ),
+                                  //Listar todos los contenedores para agregar fotos (5 por contenedor) usar widget.maneuver.containers
+                                  widget.maneuver.containers == null ||
+                                          widget.maneuver.containers!.isEmpty
+                                      ? Container(
+                                          padding: EdgeInsets.all(20),
+                                          child: Text(
+                                            "No hay contenedores disponibles",
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.grey[600],
+                                              fontStyle: FontStyle.italic,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        )
+                                      : ListView.builder(
+                                          shrinkWrap: true,
+                                          physics:
+                                              NeverScrollableScrollPhysics(),
+                                          itemCount: widget.maneuver.containers
+                                                  ?.length ??
+                                              0,
+                                          itemBuilder: (BuildContext context,
+                                              int index) {
+                                            final container = widget
+                                                .maneuver.containers![index];
+                                            return Card(
+                                              margin: EdgeInsets.symmetric(
+                                                  vertical: 4),
+                                              child: ListTile(
+                                                leading: Icon(
+                                                  Icons.inventory_2,
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .primary,
+                                                ),
+                                                title: Text(
+                                                  'Contenedor ${container.code}',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                                ),
+                                                subtitle: Text(
+                                                    'Placa: ${container.license_plate}'),
+                                                trailing: Icon(
+                                                    Icons.arrow_forward_ios,
+                                                    size: 16),
+                                                onTap: () {
+                                                  // Navegar a la página de fotos del contenedor
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          container_files
+                                                              .ManeuverContainerFilesPage(
+                                                        maneuver:
+                                                            widget.maneuver,
+                                                        container: container,
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ),
+                                            );
+                                          },
+                                        ),
                                 ],
                               ))),
                       SizedBox(

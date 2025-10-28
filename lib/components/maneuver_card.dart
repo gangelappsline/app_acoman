@@ -46,19 +46,22 @@ class _ManeuverCardState extends State<ManeuverCard> {
                   style: const TextStyle(
                       fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-                SvgPicture.asset(
-                  typeIcon,
-                  width: 40,
-                  height: 40,
-                  semanticsLabel: 'Dart Logo',
+                Text("Contenedores: ${widget.maneuver.containers?.length.toString()}"),
+              ],
+            ),
+            const SizedBox(height: 5),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Cliente: ${widget.maneuver.client.name}',
+                  style: const TextStyle(fontSize: 16),
                 ),
               ],
             ),
             const SizedBox(height: 5),
             Text(
                 '${widget.maneuver.product} - ${widget.maneuver.bulks.toString()} ${widget.maneuver.presentation}'),
-            const SizedBox(height: 8),
-            Text(widget.maneuver.company),
           ],
         ),
       ),
